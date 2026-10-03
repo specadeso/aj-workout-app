@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0e12" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AJ 5x5" />
+  <meta name="description" content="AJ 5x5 — barbell squat, barbell bench press, barbell deadlift, overhead press, preacher curls, back extensions, kettlebell swings, and decline bench sit-ups. Offline phone logger." />
+  <title>AJ 5x5</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- Program names live in the document so the page itself lists the lifts. -->
+  <template id="program-source">
+    Workout A: Barbell squat, Barbell bench press, Preacher curls.
+    Workout B: Barbell deadlift, Overhead press, Back extensions.
+    Workout C: Kettlebell swings, Decline bench sit-ups, Barbell squat.
+  </template>
+
+  <div id="rest" class="rest" hidden>
+    <p class="kicker">Rest</p>
+    <div class="rest-mid">
+      <p class="rest-context" id="rest-context">Rest</p>
+      <div class="mega" id="rest-clock" role="timer">1:30</div>
+      <div class="bar" aria-hidden="true"><span id="rest-bar"></span></div>
+    </div>
+    <div class="preset-row" role="group" aria-label="Rest length">
+      <button type="button" data-rest="60">60</button>
+      <button type="button" data-rest="90">90</button>
+      <button type="button" data-rest="180">180</button>
+    </div>
+    <div class="rest-actions">
+      <button type="button" class="ghost" id="rest-skip">Skip</button>
+      <button type="button" class="primary" id="rest-add">+30s</button>
+    </div>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Confirm</h2>
+      <p id="modal-body"></p>
+      <div class="row">
+        <button type="button" class="ghost" id="modal-cancel">Cancel</button>
+        <button type="button" class="danger" id="modal-ok">End</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
